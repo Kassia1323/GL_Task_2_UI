@@ -30,14 +30,14 @@ void MainWindow::on_exit_button_clicked()
     QApplication::quit();
 }
 void MainWindow::CreateJSONFile( QString& filename,QJsonObject& json ){
-    QFile saveFile(filename);
-    if (!saveFile.open(QIODevice::WriteOnly))
+    QFile save_file(filename);
+    if (!save_file.open(QIODevice::WriteOnly))
     {
        QMessageBox::critical(this,"Error","File wasn't created.");
        return;
     }
-    QJsonDocument saveDoc(json);
-    saveFile.write(saveDoc.toJson());
+    QJsonDocument save_doc(json);
+    save_file.write(save_doc.toJson());
     QMessageBox::information(this,"","File was created.");
 }
 void MainWindow::JSONDirectoryTree(const fs::path& pathToShow, QJsonObject& j_main, int level)
